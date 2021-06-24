@@ -54,3 +54,17 @@
       when:
         - docker_compose_check.msg is defined
         - docker_compose_check.msg.find('No such file or directory') != -1
+
+---
+  - name: Rollaut nexus from docker
+    hosts: nexus
+    become: true
+    tasks:
+      
+    - name: Create a nexus container
+      community.docker.docker_container:
+      name: nexus
+      image: gdpingva/mynexus
+      ports:
+        - 8081:8081
+        - 8123:8123

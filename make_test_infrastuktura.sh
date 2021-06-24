@@ -67,7 +67,6 @@ echo "[jenkins]" > inventory
 gcloud compute instances list | grep alex-host1 | awk '{print $5}' >> inventory
 echo "[nexus]" >> inventory
 gcloud compute instances list | grep alex-host2 | awk '{print $5}' >> inventory
-cp ./inventory ~/ansible/1test
 cat /dev/null > ~/.ssh/known_hosts
 
 HOST=$(gcloud compute instances list | grep alex-host1 | awk '{print $5}')
