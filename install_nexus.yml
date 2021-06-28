@@ -11,6 +11,8 @@
     community.docker.docker_container:
       name: nexus
       image: gdpingva/mynexus
+      state: started
+      restart: yes
       ports:
       - 8081:8081
       - 8123:8123
