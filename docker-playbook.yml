@@ -8,17 +8,13 @@
     - name: Upgrade all packages
       yum: name=* state=latest
 
-    - name: Check if Docker is installed
-      command: systemctl status docker
-      register: docker_check
-      ignore_errors: yes
 
     - name: Download the Docker installer
       get_url:
         url: https://get.docker.com/
         dest: /root/install_docker.sh
         mode: 0700
-      when: docker_check.stderr.find('service could not be found') != -1
+
 
     - name: Install python3
       yum:
@@ -30,12 +26,9 @@
     - name: install docker sdk old
       command: "pip install docker docker-py six"
 
-
-
-
     - name: Install Docker
       shell: /root/install_docker.sh
-      when: docker_check.stderr.find('service could not be found') != -1
+
 
     - name: Remove the Docker installer file.
       file:
@@ -64,6 +57,3 @@
         url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
         dest: /usr/bin/docker-compose
         mode: 0755
-      when:
-        - docker_compose_check.msg is defined
-        - docker_compose_check.msg.find('No such file or directory') != -1

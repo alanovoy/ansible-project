@@ -63,7 +63,7 @@ gcloud compute instances create alex-host2 \
 --subnet $SUBNET_NAME \
 --metadata-from-file=startup-script=/Users/alanovoy/gcp/sdk/setup.key.sh
 
-sleep 50
+sleep 120
 
 echo "[jenkins]" > inventory
 HOST=$(gcloud compute instances list | grep alex-host1 | awk '{print $5}') #>> inventory
