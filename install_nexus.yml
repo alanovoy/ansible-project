@@ -4,6 +4,7 @@
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
+    pwd : null
 
   tasks:
 
@@ -16,3 +17,26 @@
       ports:
       - 8081:8081
       - 8123:8123
+  
+
+  - name: pause
+    command: "sleep 60"
+
+  - name: cat nexus password
+    community.docker.docker_container_exec:
+      container: nexus
+      command: /bin/bash -c "cat /nexus-data/admin.password"
+#    chdir: /root
+    register: nexpass
+
+  - name: print password
+    debug:
+      var: nexpass.stdout
+
+
+#  - name: get password
+#    command: pwd=$(sudo docker exec -it nexus cat ~/admin.password)
+#
+#  - name: print password
+#    debug:
+#      var: pwd
