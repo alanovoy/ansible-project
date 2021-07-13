@@ -26,17 +26,11 @@
     community.docker.docker_container_exec:
       container: nexus
       command: /bin/bash -c "cat /nexus-data/admin.password"
-#    chdir: /root
     register: nexpass
 
   - name: print password
     debug:
       var: nexpass.stdout
 
-
-#  - name: get password
-#    command: pwd=$(sudo docker exec -it nexus cat ~/admin.password)
-#
-#  - name: print password
-#    debug:
-#      var: pwd
+  - name: export pass
+    shell: "export nexpass=$nexpass.stdout"
