@@ -86,22 +86,8 @@ ssh -o StrictHostKeyChecking=no -i ~/.ssh/google_compute_engine alanovoy@$HOST '
 
 
 
+ansible-playbook docker-rel1.yml
 
 
 
 
-
-
-
-
-
-#export IMAGE_FAMILY="rhel-8"
-#export ZONE="europe-west3-c"
-#export INSTANCE_NAME="alanovoy-test"
-#export INSTANCE_TYPE="n1-standard-1"
-#gcloud compute instances create $INSTANCE_NAME \
-#        --zone=$ZONE \
-#        --image-family=$IMAGE_FAMILY \
-#        --maintenance-policy=TERMINATE \
-#        --machine-type=$INSTANCE_TYPE \
-#        --boot-disk-size=60GB \

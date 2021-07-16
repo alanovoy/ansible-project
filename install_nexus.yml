@@ -32,5 +32,20 @@
     debug:
       var: nexpass.stdout
 
-  - name: export pass
-    shell: "export nexpass=$nexpass.stdout"
+
+  - name: copy crutch
+    ansible.builtin.copy:
+      src:   /Users/alanovoy/ansible-project/change_password.sh
+      dest:  /home/alanovoy
+      owner: root
+      mode:  '0755'
+
+  - name: copy hosts
+    ansible.builtin.copy:
+      src:   /Users/alanovoy/ansible-project/hosts
+      dest:  /etc/
+      owner: root
+      mode:  '644'
+
+  - name: run crutch
+    command: /home/alanovoy/change_password.sh
