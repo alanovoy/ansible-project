@@ -1,4 +1,4 @@
 [jenkins]
 35.234.96.32   env=jenkins
 [nexus]
-34.107.20.180#   env=nexus
+34.107.20.180   env=nexus

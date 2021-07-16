@@ -38,11 +38,11 @@ if [ "$ALERT_VAR" = "$INSTANCE_NAME" ]
 fi
 
 
-#gcloud compute networks create $VPC_NAME --subnet-mode custom
+gcloud compute networks create $VPC_NAME --subnet-mode custom
 
-#gcloud compute firewall-rules create $FR_NAME --network $VPC_NAME --allow tcp:22,tcp:80,tcp:443,tcp:8080,tcp:8081,tcp:8123,icmp
+gcloud compute firewall-rules create $FR_NAME --network $VPC_NAME --allow tcp:22,tcp:80,tcp:443,tcp:8080,tcp:8081,tcp:8123,icmp
 
-#gcloud compute networks subnets create $SUBNET_NAME --network $VPC_NAME --range 10.0.10.0/24
+gcloud compute networks subnets create $SUBNET_NAME --network $VPC_NAME --range 10.0.10.0/24
 
 gcloud compute instances create alex-host1 \
 --zone=$INSTANCE_ZONE  --machine-type=$INSTANCE_TYPE \
