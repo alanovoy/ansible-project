@@ -71,7 +71,7 @@ echo $HOST "  env=jenkins" >> inventory
 echo $HOST    jenkins > hosts
 
 echo "[nexus]" >> inventory
-HOST=$(gcloud compute instances list | grep alex-host2 | awk '{print $5}')# >> inventory
+HOST=$(gcloud compute instances list | grep alex-host2 | awk '{print $5}') # >> inventory
 echo $HOST "  env=nexus" >> inventory
 echo $HOST    nexus >> hosts
 cat /dev/null > ~/.ssh/known_hosts
